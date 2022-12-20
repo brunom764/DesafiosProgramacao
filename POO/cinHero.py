@@ -1,3 +1,17 @@
+# A ONG CIn-Hero é uma instituição que salva animais perdidos pela cidade do Recife e divulga os bichinhos encontrados na internet.
+# Você receberá inputs de 1 a 5 onde cada número corresponde/realiza um comando dentro do sistema do CIn-Hero.
+
+Legenda de Comandos:
+1 - Cadastrar
+
+2 - Imprimir relatório
+
+3 - Imprimir os animais depois de uma data
+
+4 - Remover um animal
+
+5 - Finaliza o código
+
 class Animal:
     def __init__(self):
         self.listaAnimais = []
