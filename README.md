@@ -1,2 +1,4 @@
-# Logica de Programacao com Python
-Desafios de lógica de programação com python
+# Desafios de logica de Programacao com Python
+
+Clique nas pastas e veja o codigo e o texto do desafio
+
