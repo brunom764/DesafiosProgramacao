@@ -99,7 +99,7 @@ class listDuplaEncad:
             siteAnalisado = siteAnalisado.prev
 
 
-def pedido(comando):
+def pedido(comando, entrada):
     if comando == "ADD":
         sites.add(entrada[1])
 
@@ -123,4 +123,4 @@ end = False
 
 while not end:
     entrada = input().split()
-    end = pedido(entrada[0])
+    end = pedido(entrada[0], entrada)
