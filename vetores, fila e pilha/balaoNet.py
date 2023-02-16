@@ -51,15 +51,16 @@ class listDuplaEncad:
         self.tail = None  # ultimo nó
 
     def add(self, site):
-        novoSite = Node(site)  # Cria nó
-
-        if self.tail is None:
+        novoSite = Node(site)  # cria nó
+    
+        if self.head is None:
             self.head = self.tail = novoSite  # primeiro nó
-        else:  # add um novo nó no final da lista
-            novoSite.prev = self.tail
-            self.tail.next = novoSite
-            self.tail = novoSite
-
+        else:
+            self.head.prev = novoSite # add no head
+            novoSite.next = self.head
+            self.head = novoSite
+        
+        
     def rem(self, site):
         siteAnalisado = self.head
         while siteAnalisado is not None:
@@ -78,25 +79,21 @@ class listDuplaEncad:
 
     def find(self, site):
         siteAnalisado = self.head
+        presente = False
         while siteAnalisado is not None:
             if siteAnalisado.data == site:
-                if siteAnalisado.prev is not None:
-                    siteAnalisado.prev.next = siteAnalisado.next
-                else:
-                    self.head = siteAnalisado.next
-                if siteAnalisado.next is not None:
-                    siteAnalisado.next.prev = siteAnalisado.prev
-                else:
-                    self.tail = siteAnalisado.prev
-                self.add(site)
-                return
+                presente = True
+                break
             siteAnalisado = siteAnalisado.next
+        if presente:
+            self.rem(site)
+            self.add(site)  # add no head
 
     def exib(self):
-        siteAnalisado = self.tail
+        siteAnalisado = self.head
         while siteAnalisado is not None: # printa tds os sites ate ser none
             print(siteAnalisado.data)
-            siteAnalisado = siteAnalisado.prev
+            siteAnalisado = siteAnalisado.next
 
 
 def pedido(comando, entrada):
