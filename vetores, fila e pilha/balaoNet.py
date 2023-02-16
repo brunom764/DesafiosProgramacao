@@ -39,50 +39,88 @@
 
 
 
-class BalaoExplorer:
+class Node:
+    def __init__(self, data):
+        self.data = data  # valor
+        self.prev = None  # -1
+        self.next = None  # +1
+
+class listDuplaEncad:
     def __init__(self):
-        self.lista = list()
-        self.end = False
+        self.head = None  # primeiro nó
+        self.tail = None  # ultimo nó
+
+    def add(self, site):
+        novoSite = Node(site)  # Cria nó
+
+        if self.tail is None:
+            self.head = self.tail = novoSite  # primeiro nó
+        else:  # add um novo nó no final da lista
+            novoSite.prev = self.tail
+            self.tail.next = novoSite
+            self.tail = novoSite
+
+    def rem(self, site):
+        siteAnalisado = self.head
+        while siteAnalisado is not None:
+            if siteAnalisado.data == site:
+                if siteAnalisado.prev is not None:
+                    siteAnalisado.prev.next = siteAnalisado.next  #o next do nó anterior deve ser apontado pro next do nó remov
+                else:
+                    self.head = siteAnalisado.next
+
+                if siteAnalisado.next is not None:
+                    siteAnalisado.next.prev = siteAnalisado.prev
+                else:
+                    self.tail = siteAnalisado.prev
+                return
+            siteAnalisado = siteAnalisado.next
+
+    def find(self, site):
+        siteAnalisado = self.head
+        while siteAnalisado is not None:
+            if siteAnalisado.data == site:
+                if siteAnalisado.prev is not None:
+                    siteAnalisado.prev.next = siteAnalisado.next
+                else:
+                    self.head = siteAnalisado.next
+                if siteAnalisado.next is not None:
+                    siteAnalisado.next.prev = siteAnalisado.prev
+                else:
+                    self.tail = siteAnalisado.prev
+                self.add(site)
+                return
+            siteAnalisado = siteAnalisado.next
+
+    def exib(self):
+        siteAnalisado = self.tail
+        while siteAnalisado is not None: # printa tds os sites ate ser none
+            print(siteAnalisado.data)
+            siteAnalisado = siteAnalisado.prev
 
 
-    def checkEnd(self):
-        return self.end
+def pedido(comando):
+    if comando == "ADD":
+        sites.add(entrada[1])
 
-    def caminho(self, comando):
-        if comando[0:3] == "ADD":
-            site = comando[4:]
-            self.lista.insert(0, site)
+    elif comando == "REM":
+        sites.rem(entrada[1])
 
-        elif comando[0:3] == "REM":
-            site = comando[4:]
-            if site in self.lista:
-                self.lista.remove(site)
+    elif comando == "EXIB":
+        sites.exib()
 
-        elif comando[0:4] == "FIND":
-            site = comando[5:]
-            for s in self.lista:
-                if s == site:
-                    self.lista.remove(site)
-                    self.lista.insert(0, site)
+    elif comando == "FIND":
+        sites.find(entrada[1])
 
-        elif comando[0:3] == "EXI":
-            if len(self.lista) > 0:
-                for i in range(len(self.lista)):
-                    print(self.lista[i].strip())
-
-        elif comando[0:3] == "END":
-            self.end = True
-
-        else:
-            pass
+    elif comando == "END":
+        return True
+    return False
 
 
-
+# parte principal
+sites = listDuplaEncad()
 end = False
-lista = BalaoExplorer()
+
 while not end:
-    com = input()
-    lista.caminho(com)
-    end = lista.checkEnd()
-
-
+    entrada = input().split()
+    end = pedido(entrada[0])
