@@ -19,23 +19,7 @@
 #
 # o comando FIND deverá localizar um elemento já existente na lista e colocá-lo na primeira posição dela
 #
-# exemplo :
-#
-# lista = d - b - c - a
-#
-# FIND(“a”)
-#
-# EXIB
-#
-# resultado da lista = a - d - b - c
-#
-# Output
-#
-# Após o comando EXIB será imprimido o histórico, exemplo:
-#
-# site1.com.br
-#
-# site2.com.br
+
 
 
 
