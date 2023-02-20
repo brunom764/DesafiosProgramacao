@@ -55,19 +55,19 @@ class listaDuplaEncad:
     def add(self, site):
         novoSite = No(site)  # cria nó
 
-        if self.head is None:
+        if self.tail is None:
             self.head = self.tail = novoSite  # primeiro nó
-        else:
-            self.head.prev = novoSite  # add no head
-            novoSite.next = self.head
-            self.head = novoSite
+        else:  # add um novo nó no final da lista
+            novoSite.prev = self.tail
+            self.tail.next = novoSite
+            self.tail = novoSite
 
     def rem(self, site):
         siteAnalisado = self.head
         while siteAnalisado is not None:
             if siteAnalisado.data == site:
                 if siteAnalisado.prev is not None:
-                    siteAnalisado.prev.next = siteAnalisado.next  # o next do nó anterior deve ser apontado pro next do nó remov
+                    siteAnalisado.prev.next = siteAnalisado.next  #o next do nó anterior deve ser apontado pro next do nó remov
                 else:
                     self.head = siteAnalisado.next
 
@@ -75,6 +75,7 @@ class listaDuplaEncad:
                     siteAnalisado.next.prev = siteAnalisado.prev
                 else:
                     self.tail = siteAnalisado.prev
+                return
             siteAnalisado = siteAnalisado.next
 
     def find(self, site):
@@ -91,10 +92,10 @@ class listaDuplaEncad:
 
 
     def exib(self):
-        siteAnalisado = self.head
+        siteAnalisado = self.tail
         while siteAnalisado is not None:  # printa tds os sites ate ser none
             print(siteAnalisado.data)
-            siteAnalisado = siteAnalisado.next
+            siteAnalisado = siteAnalisado.prev
 
 
 # parte principal
