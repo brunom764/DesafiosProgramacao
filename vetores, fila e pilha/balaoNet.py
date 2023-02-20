@@ -23,34 +23,51 @@
 
 
 
-class Node:
+class No:
     def __init__(self, data):
         self.data = data  # valor
         self.prev = None  # -1
         self.next = None  # +1
 
-class listDuplaEncad:
+
+class listaDuplaEncad:
     def __init__(self):
         self.head = None  # primeiro nó
         self.tail = None  # ultimo nó
 
+    def pedido(self, comando, entrada): #Chama todos os metodos abaixo
+        if comando == "ADD":
+            self.add(entrada[1])
+
+        elif comando == "REM":
+            self.rem(entrada[1])
+
+        elif comando == "EXIB":
+            self.exib()
+
+        elif comando == "FIND":
+            self.find(entrada[1])
+
+        elif comando == "END":
+            return True
+        return False
+
     def add(self, site):
-        novoSite = Node(site)  # cria nó
-    
+        novoSite = No(site)  # cria nó
+
         if self.head is None:
             self.head = self.tail = novoSite  # primeiro nó
         else:
-            self.head.prev = novoSite # add no head
+            self.head.prev = novoSite  # add no head
             novoSite.next = self.head
             self.head = novoSite
-        
-        
+
     def rem(self, site):
         siteAnalisado = self.head
         while siteAnalisado is not None:
             if siteAnalisado.data == site:
                 if siteAnalisado.prev is not None:
-                    siteAnalisado.prev.next = siteAnalisado.next  #o next do nó anterior deve ser apontado pro next do nó remov
+                    siteAnalisado.prev.next = siteAnalisado.next  # o next do nó anterior deve ser apontado pro next do nó remov
                 else:
                     self.head = siteAnalisado.next
 
@@ -58,7 +75,6 @@ class listDuplaEncad:
                     siteAnalisado.next.prev = siteAnalisado.prev
                 else:
                     self.tail = siteAnalisado.prev
-                return
             siteAnalisado = siteAnalisado.next
 
     def find(self, site):
@@ -73,35 +89,18 @@ class listDuplaEncad:
             self.rem(site)
             self.add(site)  # add no head
 
+
     def exib(self):
         siteAnalisado = self.head
-        while siteAnalisado is not None: # printa tds os sites ate ser none
+        while siteAnalisado is not None:  # printa tds os sites ate ser none
             print(siteAnalisado.data)
             siteAnalisado = siteAnalisado.next
 
 
-def pedido(comando, entrada):
-    if comando == "ADD":
-        sites.add(entrada[1])
-
-    elif comando == "REM":
-        sites.rem(entrada[1])
-
-    elif comando == "EXIB":
-        sites.exib()
-
-    elif comando == "FIND":
-        sites.find(entrada[1])
-
-    elif comando == "END":
-        return True
-    return False
-
-
 # parte principal
-sites = listDuplaEncad()
+sites = listaDuplaEncad()
 end = False
 
 while not end:
     entrada = input().split()
-    end = pedido(entrada[0], entrada)
+    end = sites.pedido(entrada[0], entrada)
