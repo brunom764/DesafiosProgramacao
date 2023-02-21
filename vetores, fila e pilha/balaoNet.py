@@ -5,12 +5,7 @@
 # Input
 #
 # O programa receberá uma quantidade indefinida de entradas e deverá encerrar quando o comando final “END” for dado . Comandos :
-# ADD X (X poderá ser qualquer string)
-# REM X (X poderá ser qualquer string)
-# EXIB
-# FIND X (X poderá ser qualquer string , desde que contida na lista)
-# END
-#
+
 # o comando ADD deverá inserir o elemento na sua lista duplamente encadeada
 #
 # o comando REM deverá remover o elemento na sua lista duplamente encadeada
