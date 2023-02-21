@@ -3,17 +3,15 @@
 # A função deve retornar um novo vetor com a nova locação adicionada.
 # Mas, atenção, antes disso você deve executar uma função pilhaImaculada(pilha) que checa em tempo O(n) se ela estava
 # na ordem certa, antes de fazer a inserção.
-#
+
 # Input
-#
 # A entrada do programa é composta por duas linhas.
 # A primeira representa o vetor que se refere à pilha de solicitações, com números inteiros (códigos de locação)
 # separados por vírgula e sem espaço, no formato a,b,c.
 # A segunda linha é o código da nova locação, que é um inteiro simples
 # que deverá ser inserido na lista, se esta estiver ordenada.
-#
+
 # Output
-#
 # Você deve produzir uma única linha de saída. Caso a pilha tenha sido encontrada ordenada e a
 # nova solicitação tenha sido inserida nela, deve-se imprimir a nova pilha de solicitações,
 # no mesmo formato da entrada (['a','b','c']). Caso a pilha tenha sido encontrada desordenada,
