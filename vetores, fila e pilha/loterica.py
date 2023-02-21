@@ -1,3 +1,14 @@
+# Problem Statement
+
+# Uma lotérica muito movimentada pretende implementar uma nova mecânica às filas dos seus caixas de atendimento.
+# A lotérica possui 2 caixas, e a mecânica proposta é a seguinte: Sempre que um dos caixas estiver sem fila e chamar o próximo,
+# a metade (arredondando para cima) traseira da fila do outro caixa será realocada
+# para ele na ordem inversa à que ela se encontra (Os últimos serão os primeiros).
+
+# Você foi então contratado para desenvolver um sistema para registrar as movimentações das filas nos caixas,
+# bem como calcular o valor total arrecadado por cada um dos caixas.
+
+
 class No:
     def __init__(self, nome, valor):
         self.valor = (nome, float(valor))
